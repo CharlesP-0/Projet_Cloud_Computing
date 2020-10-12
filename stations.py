@@ -20,7 +20,7 @@ def get_bike_lyon():
     return response_json.get("records", [])
 
 def get_bike_rennes():
-    url = "https://data.explore.star.fr/api/records/1.0/search/?dataset=vls-stations-etat-tr&q=&rows=3000&facet=nom&facet=etat&facet=nombreemplacementsactuels&facet=nombreemplacementsdisponibles&facet=nombrevelosdisponibles"
+    url = "https://data.explore.star.fr/api/records/1.0/search/?dataset=vls-stations-etat-tr&q=&facet=nom&facet=etat&facet=nombreemplacementsactuels&facet=nombreemplacementsdisponibles&facet=nombrevelosdisponibles"
     response = requests.request("GET",url)
     response_json = json.loads(response.text.encode('utf8'))
     return response_json.get("records", [])
