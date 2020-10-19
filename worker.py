@@ -1,4 +1,3 @@
-import stations
 import pymongo
 import time
 
