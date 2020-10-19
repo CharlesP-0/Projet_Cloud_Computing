@@ -15,6 +15,7 @@ def get_bike_lille():
                 'dataset': 'Lille',
                 'id_ext': elem.get('fields', {}).get('libelle')
             },
+            'enabled': elem.get('fields', {}).get('etat', '') == 'EN SERVICE'
             'tpe': elem.get('fields', {}).get('type', '') == 'AVEC TPE'
         }
         for elem in bike
@@ -80,3 +81,10 @@ def get_bike_rennes():
         for elem in bike
     ]
     return bike_to_insert
+
+datas = stations.get_bike_lille()
+    for d in datas:
+        query = collection.find_one({'source':d['source']})
+        if query == None:
+            collection.insert_one(d).inserted_id
+            print("INSERT")
