@@ -9,7 +9,7 @@ collection = db.stations
 while True:
     datas = stations.get_bike_lille()
     for d in datas:
-        query = collection.find_one({'recordid':d['recordid']})
+        query = collection.find_one({'source':d['source']})
         if query != None:
             collection.update_one(query,{"$set":d})
             print("UPDATE")
